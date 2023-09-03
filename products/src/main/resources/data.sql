@@ -1,0 +1,2 @@
+INSERT INTO tb_products (name, price, description, photo_url) VALUES ('cuscuz', 20.0,'cuscuzinho','https://comidinhasdochef.com/wp-content/uploads/2019/12/Cuscuz-Nordestino.jpg');
+INSERT INTO tb_products (name, price, description, photo_url) VALUES ('cerveja', 8.0,'cerveja litrão','https://d2r9epyceweg5n.cloudfront.net/stores/001/043/122/products/cerveja-skol-1000-ml1-4201d3b09d8db9916f15676911862889-640-0.jpg');
