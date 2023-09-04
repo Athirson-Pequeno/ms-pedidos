@@ -45,16 +45,8 @@ public class ProductsResource {
 	
 	@PostMapping(value = "/novo")
 	public void novo(@ModelAttribute Product produto) {
-		
-		System.out.println("id " + produto.getId());
-		System.out.println("nome " + produto.getName());
-		System.out.println("descricao " + produto.getDescription());
-		System.out.println("preco " + produto.getPrice());
-		System.out.println("foto" + produto.getPhotoUrl());
-		System.out.println("|||||||||||||||||||");
-		
-		repository.save(produto);
-		repository.flush();
+
+		repository.saveAndFlush(produto);
 		
 	}
 }
