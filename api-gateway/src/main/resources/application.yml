@@ -16,6 +16,11 @@ spring:
           uri: lb://PRODUCTS
           predicates:
           - Path=/products/**
-            
-        
-             
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedHeaders: "*"
+            allowedMethods:
+            - GET
+            - POST
