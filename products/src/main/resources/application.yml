@@ -2,7 +2,7 @@ spring:
   application:
     name: products
   datasource:
-    url: jdbc:h2:file:/data/demo
+    url: jdbc:h2:file:/data/demo2
     username: sa
     password: 
     driverClassName: org.h2.Driver
@@ -16,8 +16,6 @@ spring:
       ddl-auto: update
     database-platform: org.hibernate.dialect.H2Dialect
   
-
-    
 server:
   port: ${PORT:0}
 eureka:

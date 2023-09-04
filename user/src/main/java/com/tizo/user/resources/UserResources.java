@@ -32,11 +32,12 @@ public class UserResources {
 		
 	}
 	
+	/*
 	@GetMapping(value = "/roles")
 	public ResponseEntity<List<User>> findByRole(@RequestParam String role){
 		List<User> list = userRepositoy.findByRole(role);
 		return ResponseEntity.ok(list);
 		
-	}
+	}*/
 	
 }
