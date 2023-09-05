@@ -17,14 +17,13 @@ public class UserRoleService {
 	@Autowired
 	private RoleRepository roleRepository;
 	
-	public void AddUserRole(Long userId, Long roleID) {
+	public void AddUserRole(User user, Long roleID) {
 		
-		User user = userRepositoy.findById(userId).get();
 		Role role = roleRepository.findById(roleID).get();
-		
 		user.getRoles().add(role);
 		
 		userRepositoy.save(user);
+		
 	}
 
 }

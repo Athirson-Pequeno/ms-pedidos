@@ -5,6 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,11 +38,23 @@ public class UserResources {
 		
 	}
 	
-	@GetMapping(value = "/save")
-	public ResponseEntity<String> saveUserRole(@RequestParam Long userId, @RequestParam Long roleId) {
+	@PostMapping(value = "/create/user")
+	public ResponseEntity<String> createUser(@ModelAttribute User user) {
 		
-		userRoleService.AddUserRole(userId, roleId);
-		return ResponseEntity.ok("Relação user role criada");
+		userRepositoy.saveAndFlush(user);
+		userRoleService.AddUserRole(user, 1L);
+		
+		return ResponseEntity.ok("User criado");
+		
+	}
+	
+	@PostMapping(value = "/create/admin")
+	public ResponseEntity<String> createAdmin(@ModelAttribute User user) {
+		
+		userRepositoy.saveAndFlush(user);
+		userRoleService.AddUserRole(user, 1L);
+		userRoleService.AddUserRole(user, 2L);
+		return ResponseEntity.ok("Admin criad");
 		
 	}
 	

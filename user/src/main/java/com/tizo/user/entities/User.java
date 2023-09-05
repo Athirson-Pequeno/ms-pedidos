@@ -27,11 +27,12 @@ public class User implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@Column(unique = true)
+	@Column(unique = true, nullable = false)
 	private String email;
+	@Column(nullable = false)
 	private String name;
+	@Column(nullable = false)
 	private String password;
-	
 	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_user_role",
 				joinColumns = @JoinColumn(name = "user_id"),
@@ -41,6 +42,7 @@ public class User implements Serializable {
 	public User() {
 		super();
 	}
+	
 	public User(Long id, String email, String name, String password) {
 		super();
 		this.id = id;
@@ -48,6 +50,7 @@ public class User implements Serializable {
 		this.name = name;
 		this.password = password;
 	}
+	
 	public Long getId() {
 		return id;
 	}
