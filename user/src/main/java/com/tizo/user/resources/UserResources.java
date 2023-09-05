@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tizo.user.entities.User;
 import com.tizo.user.repositories.UserRepositoy;
+import com.tizo.user.service.UserRoleService;
 
 @RestController
 @RequestMapping(value = "/users")
@@ -18,6 +19,9 @@ public class UserResources {
 
 	@Autowired
 	private UserRepositoy userRepositoy;
+	
+	@Autowired
+	private UserRoleService userRoleService;
 	
 	@GetMapping
 	public ResponseEntity<List<User>> findAll(){
@@ -32,12 +36,13 @@ public class UserResources {
 		
 	}
 	
-	/*
-	@GetMapping(value = "/roles")
-	public ResponseEntity<List<User>> findByRole(@RequestParam String role){
-		List<User> list = userRepositoy.findByRole(role);
-		return ResponseEntity.ok(list);
+	@GetMapping(value = "/save")
+	public ResponseEntity<String> saveUserRole(@RequestParam Long userId, @RequestParam Long roleId) {
 		
-	}*/
+		userRoleService.AddUserRole(userId, roleId);
+		return ResponseEntity.ok("Relação user role criada");
+		
+	}
+	
 	
 }
